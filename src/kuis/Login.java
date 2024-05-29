@@ -42,11 +42,16 @@ public class Login extends JFrame{
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String enteredPin = new String(pinField.getPassword());
-                if (enteredPin.equals(PIN)) {
-                    Financial f = new Financial();
-                } else {
-                    loginMessage.setText("PIN salah!");
+                try{
+                    String enteredPin = new String(pinField.getPassword());
+                    if (enteredPin.equals(PIN)) {
+                        Financial f = new Financial();
+                    } else {
+                        loginMessage.setText("PIN salah!");
+                    }
+                }catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                    JOptionPane.showMessageDialog(null, "Input Gagal!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
